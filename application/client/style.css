@@ -1,0 +1,15 @@
+nav {
+    background-color: rgb(13, 13, 69);
+    padding: 0%;
+}
+
+nav a {
+    color: white;
+    padding-bottom: 20px;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+}
