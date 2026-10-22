@@ -1,11 +1,13 @@
+body {
+    margin: 0%;
+}
+
 nav {
     background-color: rgb(13, 13, 69);
-    padding: 0%;
 }
 
 nav a {
     color: white;
-    padding-bottom: 20px;
 }
 
 .logo {
