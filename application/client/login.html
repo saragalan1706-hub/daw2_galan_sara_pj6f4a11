@@ -1,17 +1,30 @@
 </html>
-	<head>
-		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
-		<title>EXEMPLES DE FORMULARIS</title>	
-	</head>  
-	<body>
-		<form action="../server/login.php" method="GET">
-			<font face="Arial">
-				Nom: 
-				<input type="text" name="nom"><br> 
-				Contrasenya: 
-				<input type="password" name="ctsnya"><br> 
-				<input type="submit"/>
-			</font>
-		</form>
-	</body>
+
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<title>Inicio de sesion</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav>
+		<img class="logo" src="./img/logo.png">
+		<a href="index.html">Inicio</a>
+		<a href="documentacion.html">Documentacio</a>
+		<a href="login.html">Inicio de sesion</a>
+		<a href="index.html"><img class="flecha" src="./img/flecha.png"></a>
+	</nav>
+	<form action="../server/login.php" method="GET">
+		<h2>Inicio de sesion</h2>
+		
+		<label for="nom">Nombre</label>
+		<input type="text" id="nom" name="nom" required>
+
+		<label for="contra">Contraseña</label>
+		<input type="password" id="contra" name="contra" required>
+		
+		<button type="submit">Inicio</button>
+		
+	</form>
+</body>
+
 </html>
