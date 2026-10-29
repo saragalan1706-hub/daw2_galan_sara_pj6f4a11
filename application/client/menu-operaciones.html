@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de operaciones</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <img class="logo" src="./img/logo.png">
+        <a href="index.html">Inicio</a>
+        <a href="documentacion.html">Documentacio</a>
+        <a href="login.html">Inicio de sesion</a>
+        <a href="login.html"><img class="flecha" src="./img/flecha.png"></a>
+    </nav>
+    <br>
+    <select id="operacion">
+        <option value="crear.html">Crear una nueva comanda</option>
+        <option value="listar.html">Visualizar comandos</option>
+    </select>
+
+    <button id="btnAcceder">Aceder a la operacion selecionada</button>
+    <button id="btnInicio">Volver al inicio</button>
+
+    <script>
+        const select = document.getElementById("operacion");
+        
+        document.getElementById("btnAcceder").addEventListener("click", () => {
+            window.location.href = select.value;
+        });
+
+        document.getElementById("btnInicio").addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+
+</html>

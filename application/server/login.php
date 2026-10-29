@@ -16,11 +16,12 @@ function checkUser($users, $user, $password) {
 
 // TEMPORAL: $_REQUEST para probar desde la URL
 $user = $_REQUEST["nom"] ?? "";
-$password = $_REQUEST["ctsnya"] ?? "";
+$password = $_REQUEST["contra"] ?? "";
 
 $users = readUsers();
 if (checkUser($users, $user, $password)) {
-    echo "OK";
+    header("Location: ../client/menu-operaciones.html");
+    exit;
 } else {
     echo "ERROR";
 }
