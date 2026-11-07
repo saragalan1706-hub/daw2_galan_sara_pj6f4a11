@@ -1,0 +1,66 @@
+[
+    {
+        "orderId": "1",
+        "customer": {
+            "fullName": "Sara Gal\u00e1n Jim\u00e9nez",
+            "address": "clot",
+            "email": "sagaji@gmail.com",
+            "phone": "123456789"
+        },
+        "products": {
+            "ball": {
+                "name": "Football Ball",
+                "price": 24.99,
+                "quantity": 7
+            },
+            "shoes": {
+                "name": "Running shoes",
+                "price": 79.9,
+                "quantity": 4
+            },
+            "racket": {
+                "name": "Tennis racket",
+                "price": 59.5,
+                "quantity": 7
+            },
+            "mat": {
+                "name": "Yoga mat",
+                "price": 19.95,
+                "quantity": 5
+            }
+        },
+        "totalWithVat": 1223.04
+    },
+    {
+        "orderId": "2",
+        "customer": {
+            "fullName": "Ruben",
+            "address": "clot",
+            "email": "rugaji@gmail.com",
+            "phone": "987654321"
+        },
+        "products": {
+            "ball": {
+                "name": "Football Ball",
+                "price": 24.99,
+                "quantity": 1
+            },
+            "shoes": {
+                "name": "Running shoes",
+                "price": 79.9,
+                "quantity": 1
+            },
+            "racket": {
+                "name": "Tennis racket",
+                "price": 59.5,
+                "quantity": 1
+            },
+            "mat": {
+                "name": "Yoga mat",
+                "price": 19.95,
+                "quantity": 1
+            }
+        },
+        "totalWithVat": 223.05
+    }
+]

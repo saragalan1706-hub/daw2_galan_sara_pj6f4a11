@@ -1,27 +1,45 @@
 <?php
-function readUsers() {
-    $path = __DIR__ . "/../../users/users.json";
-    $json = file_get_contents($path);
-    return json_decode($json, true);
+// Lee users.json y devuelve el array de usuarios (vacío si no se puede leer)
+function readUsers(): array {
+    $path = __DIR__ . "/../../users/users.json";   // ruta al archivo de usuarios
+    if (!file_exists($path)) {
+        return [];                                 // sin archivo = ningún usuario válido
+    }
+    $json  = file_get_contents($path);             // lee el texto del archivo
+    $users = json_decode($json, true);             // texto JSON -> array asociativo
+    return is_array($users) ? $users : [];
 }
 
-function checkUser($users, $user, $password) {
+// Comprueba si usuario y contraseña coinciden con alguno de la lista.
+// Comparación directa porque el password en users.json está en texto plano.
+function checkUser(array $users, string $username, string $password): bool {
     foreach ($users as $u) {
-        if ($u["user"] === $user && $u["password"] === $password) {
+        if ($u["user"] === $username && $u["password"] === $password) {
             return true;
         }
     }
     return false;
 }
 
-// TEMPORAL: $_REQUEST para probar desde la URL
-$user = $_REQUEST["nom"] ?? "";
-$password = $_REQUEST["contra"] ?? "";
+// ---- Programa principal ----
+
+// Las credenciales llegan por POST; cualquier otro método se rechaza
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    exit;
+}
+
+$username = trim($_POST["username"] ?? "");   // trim quita espacios sobrantes
+$password = $_POST["password"] ?? "";
 
 $users = readUsers();
-if (checkUser($users, $user, $password)) {
-    header("Location: ../client/menu-operaciones.html");
-    exit;
+
+header("Content-Type: text/plain; charset=UTF-8");   // respuesta solo texto, sin HTML
+
+if (checkUser($users, $username, $password)) {
+    http_response_code(200);                          // 200 OK: usuario válido
+    echo "OK";
 } else {
-    echo "ERROR";
+    http_response_code(401);                          // 401: no se ha podido validar
+    echo "Authentication failed";
 }

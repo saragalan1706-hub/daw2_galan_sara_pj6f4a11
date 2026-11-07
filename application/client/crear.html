@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creacion de comandas</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <img class="logo" src="./img/logo.png">
@@ -14,5 +16,73 @@
         <a href="login.html">Inicio de sesion</a>
         <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
     </nav>
+    <br>
+    <h1>Create a new order</h1>
+    <form id="orderForm">
+        <h2>User data</h2>
+        <input type="text" name="orderId" placeholder="Order ID" required>
+        <input type="text" name="fullName" placeholder="Full name" required>
+        <input type="text" name="address" placeholder="Address" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone" required>
+
+        <h2>Products</h2>
+        <div class="product">
+            <input type="checkbox" class="check">
+            <p>Football Ball - 24.99€</p>
+            <input type="number" name="quantity[ball]" min="1" value="1" disabled>
+        </div>
+        <div class="product">
+            <input type="checkbox" class="check">
+            <p>Running shoes – 79.90€</p>
+            <input type="number" name="quantity[shoes]" min="1" value="1" disabled>
+        </div>
+        <div class="product">
+            <input type="checkbox" class="check">
+            <p>Tennis racket – 59.50€</p>
+            <input type="number" name="quantity[racket]" min="1" value="1" disabled>
+        </div>
+        <div class="product">
+            <input type="checkbox" class="check">
+            <p>Yoga mat – 19.95€</p>
+            <input type="number" name="quantity[mat]" min="1" value="1" disabled>
+        </div>
+        <br>
+        <button type="submit">Send order</button>
+    </form>
+    <p id="result"></p>
+    <button type="submit"><a href="menu-operaciones.html">Back to operation menu</a></button>
+    <button type="submit"><a href="index.html">Back to home</a></button>
+    <script>
+        function toggleQuantity(event) {
+            // busca el input numérico dentro del mismo div.product
+            const quantityInput = event.target.parentElement.querySelector('input[type="number"]');
+            quantityInput.disabled = !event.target.checked;
+        }
+
+        async function sendOrder(event) {
+            event.preventDefault();
+            const form = document.getElementById("orderForm");
+
+            const response = await fetch("../server/crear.php", {   // <- nombre correcto
+                method: "POST",
+                body: new FormData(form)
+            });
+            if (response.ok) {
+                const total = await response.text();
+                document.getElementById("result").textContent =
+                    "Total price (21% VAT included): " + total + " €";
+            } else {
+                // 404: the server sends an HTML error page
+                document.body.innerHTML = await response.text();
+            }
+        }
+
+        document.querySelectorAll(".check")
+            .forEach(c => c.addEventListener("change", toggleQuantity));
+        document.getElementById("orderForm")
+            .addEventListener("submit", sendOrder);
+    </script>
 </body>
+
 </html>

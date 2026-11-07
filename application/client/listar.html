@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <p>Listar Productos</p>
+    <nav>
+        <img class="logo" src="./img/logo.png">
+        <a href="index.html">Inicio</a>
+        <a href="documentacion.html">Documentacio</a>
+        <a href="login.html">Inicio de sesion</a>
+        <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
+    </nav>
+    <h1>Orders view</h1>
+
+    <button onclick="location.href='../server/listar.php'">
+        View all orders
+    </button>
+
+    <form action="../server/listar1.php" method="GET">
+        <input type="text" name="orderId" placeholder="Order ID">
+        <button type="submit">Search order</button>
+    </form>
 </body>
+
 </html>
