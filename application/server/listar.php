@@ -46,10 +46,18 @@ http_response_code(200);
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../client/style.css">
     <meta charset="UTF-8">
     <title>All orders</title>
 </head>
 <body>
+    <nav>
+        <img class="logo" src="../client/img/logo.png">
+        <a href="index.html">Start</a>
+        <a href="documentacion.html">Documentation</a>
+        <a href="login.html">Log in</a>
+        <a href="../client/menu-operaciones.html"><img class="flecha" src="../client/img/flecha.png"></a>
+    </nav>
 
 <h1>All orders</h1>
 

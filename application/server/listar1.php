@@ -55,8 +55,16 @@ http_response_code(200);
 <head>
     <meta charset="UTF-8">
     <title>Order details</title>
+    <link rel="stylesheet" href="../client/style.css">
 </head>
 <body>
+    <nav>
+        <img class="logo" src="../client/img/logo.png">
+        <a href="index.html">Start</a>
+        <a href="documentacion.html">Documentation</a>
+        <a href="login.html">Log in</a>
+        <a href="../client/menu-operaciones.html"><img class="flecha" src="../client/img/flecha.png"></a>
+    </nav>
 
 <h1>Order details</h1>
 
