@@ -16,55 +16,82 @@
         <a href="login.html">Log in</a>
         <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
     </nav>
-    <br>
-    <h1>Create a new order</h1>
-    <form id="orderForm">
-        <h2>User data</h2>
-        <input type="text" name="orderId" placeholder="Order ID" required>
-        <input type="text" name="fullName" placeholder="Full name" required>
-        <input type="text" name="address" placeholder="Address" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Phone" required>
 
-        <h2>Products</h2>
-        <div class="product">
-            <input type="checkbox" class="check">
-            <p>Football Ball - 24.99€</p>
-            <input type="number" name="quantity[ball]" min="1" value="1" disabled>
+    <div class="order-container">
+        <div class="order-card">
+            <h1>Create a new order</h1>
+
+            <form id="orderForm">
+                <!-- fieldset + legend agrupan visualmente los campos del cliente -->
+                <fieldset>
+                    <legend>User data</legend>
+                    <input type="text" name="orderId" placeholder="Order ID" required>
+                    <input type="text" name="fullName" placeholder="Full name" required>
+                    <input type="text" name="address" placeholder="Address" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Phone" required>
+                </fieldset>
+
+                <!-- segundo recuadro: los productos a elegir -->
+                <fieldset>
+                    <legend>Products</legend>
+                    <div class="product">
+                        <input type="checkbox" class="check">
+                        <p>Football Ball - 24.99€</p>
+                        <input type="number" name="quantity[ball]" min="1" value="1" disabled>
+                    </div>
+                    <div class="product">
+                        <input type="checkbox" class="check">
+                        <p>Running shoes – 79.90€</p>
+                        <input type="number" name="quantity[shoes]" min="1" value="1" disabled>
+                    </div>
+                    <div class="product">
+                        <input type="checkbox" class="check">
+                        <p>Tennis racket – 59.50€</p>
+                        <input type="number" name="quantity[racket]" min="1" value="1" disabled>
+                    </div>
+                    <div class="product">
+                        <input type="checkbox" class="check">
+                        <p>Yoga mat – 19.95€</p>
+                        <input type="number" name="quantity[mat]" min="1" value="1" disabled>
+                    </div>
+                </fieldset>
+
+                <button type="submit" class="btn-principal">Send order</button>
+            </form>
+
+            <p id="result"></p>
+
+            <!-- type="button" en vez de "submit": así no intentan enviar el formulario -->
+            <button type="button" class="btn-secundario" onclick="location.href='menu-operaciones.html'">
+                Back to operation menu
+            </button>
+            <button type="button" class="btn-secundario" onclick="location.href='index.html'">
+                Back to home
+            </button>
         </div>
-        <div class="product">
-            <input type="checkbox" class="check">
-            <p>Running shoes – 79.90€</p>
-            <input type="number" name="quantity[shoes]" min="1" value="1" disabled>
-        </div>
-        <div class="product">
-            <input type="checkbox" class="check">
-            <p>Tennis racket – 59.50€</p>
-            <input type="number" name="quantity[racket]" min="1" value="1" disabled>
-        </div>
-        <div class="product">
-            <input type="checkbox" class="check">
-            <p>Yoga mat – 19.95€</p>
-            <input type="number" name="quantity[mat]" min="1" value="1" disabled>
-        </div>
-        <br>
-        <button type="submit">Send order</button>
-    </form>
-    <p id="result"></p>
-    <button type="submit"><a href="menu-operaciones.html">Back to operation menu</a></button>
-    <button type="submit"><a href="index.html">Back to home</a></button>
+    </div>
+
+    <footer>
+        <p>SportMás &copy; 2026</p>
+        <p>123 Sports Avenue, Barcelona, Spain</p>
+        <p>contact@sportmas.example</p>
+    </footer>
+
     <script>
+        // Activa/desactiva la cantidad según el checkbox de cada producto
         function toggleQuantity(event) {
             // busca el input numérico dentro del mismo div.product
             const quantityInput = event.target.parentElement.querySelector('input[type="number"]');
             quantityInput.disabled = !event.target.checked;
         }
 
+        // Envía los datos del pedido al servidor y muestra el total que devuelve
         async function sendOrder(event) {
             event.preventDefault();
             const form = document.getElementById("orderForm");
 
-            const response = await fetch("../server/crear.php", {   // <- nombre correcto
+            const response = await fetch("../server/crear.php", {
                 method: "POST",
                 body: new FormData(form)
             });
@@ -73,7 +100,7 @@
                 document.getElementById("result").textContent =
                     "Total price (21% VAT included): " + total + " €";
             } else {
-                // 404: the server sends an HTML error page
+                // 404: el servidor manda una página HTML de error
                 document.body.innerHTML = await response.text();
             }
         }

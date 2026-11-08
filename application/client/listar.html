@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View orders</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,17 +16,31 @@
         <a href="login.html">Log in</a>
         <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
     </nav>
-    <br>
-    <h1>Orders view</h1>
 
-    <button onclick="location.href='../server/listar.php'">
-        View all orders
-    </button>
+    <div class="orders-container">
+        <div class="orders-card">
+            <h1>Orders view</h1>
 
-    <form action="../server/listar1.php" method="GET">
-        <input type="text" name="orderId" placeholder="Order ID">
-        <button type="submit">Search order</button>
-    </form>
+            <!-- type="button": no envía ningún formulario, solo navega -->
+            <button type="button" class="btn-principal" onclick="location.href='../server/listar.php'">
+                View all orders
+            </button>
+
+            <hr>
+
+            <!-- GET porque es una operación de lectura, como pide el enunciado -->
+            <form action="../server/listar1.php" method="GET">
+                <input type="text" name="orderId" placeholder="Order ID">
+                <button type="submit" class="btn-secundario">Search order</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>SportMás &copy; 2026</p>
+        <p>123 Sports Avenue, Barcelona, Spain</p>
+        <p>contact@sportmas.example</p>
+    </footer>
 </body>
 
 </html>

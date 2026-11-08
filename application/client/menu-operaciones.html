@@ -16,15 +16,26 @@
         <a href="login.html">Log in</a>
         <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
     </nav>
-    <br>
-    <select id="operacion">
-        <option value="crear.html">Create a new order</option>
-        <option value="listar.html">View commands</option>
-    </select>
+    <div class="menu-container">
+        <div class="menu-card">
+            <h2>Operations menu</h2>
 
-    <button id="btnAcceder">Access the selected operation</button>
-    <button id="btnInicio">Return to the beginning</button>
+            <select id="operacion">
+                <option value="crear.html">Create a new order</option>
+                <option value="listar.html">View commands</option>
+            </select>
 
+            <!-- clase btn-principal: acción principal, en azul oscuro -->
+            <button id="btnAcceder" class="btn-principal">Access the selected operation</button>
+            <!-- clase btn-secundario: acción de vuelta, con menos peso visual -->
+            <button id="btnInicio" class="btn-secundario">Return to the beginning</button>
+        </div>
+    </div>
+    <footer>
+		<p>SportMás &copy; 2026</p>
+		<p>123 Sports Avenue, Barcelona, Spain</p>
+		<p>contact@sportmas.example</p>
+	</footer>
     <script>
         const select = document.getElementById("operacion");
         

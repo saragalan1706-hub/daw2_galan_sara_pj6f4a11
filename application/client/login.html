@@ -9,28 +9,36 @@
 </head>
 
 <body>
-    <nav>
-        <img class="logo" src="./img/logo.png">
-        <a href="index.html">Start</a>
-        <a href="documentacion.html">Documentation</a>
-        <a href="login.html">Log in</a>
-        <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
-    </nav>
+	<nav>
+		<img class="logo" src="./img/logo.png">
+		<a href="index.html">Start</a>
+		<a href="documentacion.html">Documentation</a>
+		<a href="login.html">Log in</a>
+		<a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
+	</nav>
+	<br>
+	<div class="login-container">
+		<div class="login-card">
+			<!-- Sin action ni method: el envío lo hace el JavaScript con fetch -->
+			<form id="loginForm">
+				<h2>Login</h2>
 
-	<!-- Sin action ni method: el envío lo hace el JavaScript con fetch -->
-	<form id="loginForm">
-		<h2>Login</h2>
+				<label for="username">Username</label>
+				<!-- name="username": PHP lo recibe como $_POST["username"] -->
+				<input type="text" id="username" name="username" required>
 
-		<label for="username">Username</label>
-		<!-- name="username": PHP lo recibe como $_POST["username"] -->
-		<input type="text" id="username" name="username" required>
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" required>
 
-		<label for="password">Password</label>
-		<input type="password" id="password" name="password" required>
-
-		<button type="submit">Access operations menu</button>
-	</form>
-
+				<button type="submit">Access operations menu</button>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<p>SportMás &copy; 2026</p>
+		<p>123 Sports Avenue, Barcelona, Spain</p>
+		<p>contact@sportmas.example</p>
+	</footer>
 	<script>
 		// Se ejecuta al enviar el formulario
 		async function login(event) {
