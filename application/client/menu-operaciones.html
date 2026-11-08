@@ -25,25 +25,28 @@
                 <option value="listar.html">View commands</option>
             </select>
 
-            <!-- clase btn-principal: acción principal, en azul oscuro -->
             <button id="btnAcceder" class="btn-principal">Access the selected operation</button>
-            <!-- clase btn-secundario: acción de vuelta, con menos peso visual -->
             <button id="btnInicio" class="btn-secundario">Return to the beginning</button>
         </div>
     </div>
     <footer>
-		<p>SportMás &copy; 2026</p>
-		<p>123 Sports Avenue, Barcelona, Spain</p>
-		<p>contact@sportmas.example</p>
-	</footer>
+        <p>SportMás &copy; 2026</p>
+        <p>123 Sports Avenue, Barcelona, Spain</p>
+        <p>contact@sportmas.example</p>
+    </footer>
     <script>
+        // Despegable "Create new order" y "View command", busca id="operacion"
         const select = document.getElementById("operacion");
-        
+
+        // Cuando se hace clic en el botón "btnAcceder":
         document.getElementById("btnAcceder").addEventListener("click", () => {
+            // El navegador navega a la página cuyo "value" tiene la opción seleccionada en ese momento en el <select>
             window.location.href = select.value;
         });
 
+        // Cuando se hace clic en el botón "btnInicio":
         document.getElementById("btnInicio").addEventListener("click", () => {
+            // El navegador va siempre a index.html, sin mirar el <select>
             window.location.href = "index.html";
         });
     </script>

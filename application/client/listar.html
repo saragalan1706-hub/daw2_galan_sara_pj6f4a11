@@ -21,14 +21,12 @@
         <div class="orders-card">
             <h1>Orders view</h1>
 
-            <!-- type="button": no envía ningún formulario, solo navega -->
             <button type="button" class="btn-principal" onclick="location.href='../server/listar.php'">
                 View all orders
             </button>
 
             <hr>
 
-            <!-- GET porque es una operación de lectura, como pide el enunciado -->
             <form action="../server/listar1.php" method="GET">
                 <input type="text" name="orderId" placeholder="Order ID">
                 <button type="submit" class="btn-secundario">Search order</button>

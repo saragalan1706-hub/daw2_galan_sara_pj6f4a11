@@ -42,9 +42,9 @@
 	<script>
 		// Se ejecuta al enviar el formulario
 		async function login(event) {
-			event.preventDefault();   // evita el envío normal del navegador (el GET)
+			event.preventDefault();   // Evita el envío normal del navegador (el GET)
 
-			// Leemos lo que ha escrito el usuario
+			// Lee lo que ha escrito el usuario
 			const username = document.getElementById("username").value.trim();
 			const password = document.getElementById("password").value;
 
@@ -54,23 +54,20 @@
 				return;
 			}
 
-			// Enviamos los datos al servidor por POST
+			// Envia los datos al servidor por POST
 			const response = await fetch("../server/login.php", {
 				method: "POST",
-				body: new FormData(document.getElementById("loginForm"))   // recoge los campos con name
+				body: new FormData(document.getElementById("loginForm")) // Recoge los campos con name
 			});
 
 			if (response.ok) {
 				// El servidor respondió 200: vamos al menú de operaciones
 				window.location.href = "menu-operaciones.html";
 			} else {
-				// El servidor respondió 401: mostramos el error y volvemos al inicio
+				// El servidor respondió 401: muestra el error
 				alert("Authentication error: the user could not be validated.");
-				window.location.href = "index.html";
 			}
 		}
-
-		// Conectamos la función al evento "submit" del formulario
 		document.getElementById("loginForm").addEventListener("submit", login);
 	</script>
 </body>

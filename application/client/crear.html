@@ -16,13 +16,10 @@
         <a href="login.html">Log in</a>
         <a href="menu-operaciones.html"><img class="flecha" src="./img/flecha.png"></a>
     </nav>
-
     <div class="order-container">
         <div class="order-card">
             <h1>Create a new order</h1>
-
             <form id="orderForm">
-                <!-- fieldset + legend agrupan visualmente los campos del cliente -->
                 <fieldset>
                     <legend>User data</legend>
                     <input type="text" name="orderId" placeholder="Order ID" required>
@@ -32,7 +29,6 @@
                     <input type="tel" name="phone" placeholder="Phone" required>
                 </fieldset>
 
-                <!-- segundo recuadro: los productos a elegir -->
                 <fieldset>
                     <legend>Products</legend>
                     <div class="product">
@@ -60,9 +56,8 @@
                 <button type="submit" class="btn-principal">Send order</button>
             </form>
 
-            <p id="result"></p>
+            <p class="result"></p>
 
-            <!-- type="button" en vez de "submit": así no intentan enviar el formulario -->
             <button type="button" class="btn-secundario" onclick="location.href='menu-operaciones.html'">
                 Back to operation menu
             </button>
@@ -81,7 +76,7 @@
     <script>
         // Activa/desactiva la cantidad según el checkbox de cada producto
         function toggleQuantity(event) {
-            // busca el input numérico dentro del mismo div.product
+            // Busca el input numérico dentro del mismo div.product
             const quantityInput = event.target.parentElement.querySelector('input[type="number"]');
             quantityInput.disabled = !event.target.checked;
         }
@@ -105,10 +100,8 @@
             }
         }
 
-        document.querySelectorAll(".check")
-            .forEach(c => c.addEventListener("change", toggleQuantity));
-        document.getElementById("orderForm")
-            .addEventListener("submit", sendOrder);
+        document.querySelectorAll(".check").forEach(c => c.addEventListener("change", toggleQuantity));
+        document.getElementById("orderForm").addEventListener("submit", sendOrder);
     </script>
 </body>
 

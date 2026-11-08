@@ -1,17 +1,16 @@
 <?php
 // Lee users.json y devuelve el array de usuarios (vacío si no se puede leer)
 function readUsers(): array {
-    $path = __DIR__ . "/../../users/users.json";   // ruta al archivo de usuarios
+    $path = __DIR__ . "/../../users/users.json";   // Ruta al archivo de usuarios
     if (!file_exists($path)) {
-        return [];                                 // sin archivo = ningún usuario válido
+        return [];                                 // Sin archivo = ningún usuario válido
     }
-    $json  = file_get_contents($path);             // lee el texto del archivo
-    $users = json_decode($json, true);             // texto JSON -> array asociativo
+    $json  = file_get_contents($path);             // Lee el texto del archivo
+    $users = json_decode($json, true);             // Texto JSON -> array asociativo
     return is_array($users) ? $users : [];
 }
 
 // Comprueba si usuario y contraseña coinciden con alguno de la lista.
-// Comparación directa porque el password en users.json está en texto plano.
 function checkUser(array $users, string $username, string $password): bool {
     foreach ($users as $u) {
         if ($u["user"] === $username && $u["password"] === $password) {
@@ -20,8 +19,6 @@ function checkUser(array $users, string $username, string $password): bool {
     }
     return false;
 }
-
-// ---- Programa principal ----
 
 // Las credenciales llegan por POST; cualquier otro método se rechaza
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {

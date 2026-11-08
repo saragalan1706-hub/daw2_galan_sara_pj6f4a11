@@ -1,23 +1,30 @@
 <?php
 
-const ORDERS_DIR  = __DIR__ . '/../../orders';
-const ORDERS_FILE = ORDERS_DIR . '/orders.json';
+const ORDERS_DIR  = __DIR__ . '/../../orders';          // carpeta "orders"
+const ORDERS_FILE = ORDERS_DIR . '/orders.json';         // archivo "orders.json" dentro de esa carpeta
 
-// Convierte el array de productos de un pedido en un texto legible,
-// tipo "Football Ball x2 (24.99 €), Yoga mat x1 (19.95 €)"
+// Convierte el array de productos de UN pedido en un texto legible
+// Se usa más abajo, dentro de la tabla, una vez por cada comanda
 function formatProducts(array $products): string {
-    $items = [];
+    $items = [];   // Guarda el texto de cada producto
+
     foreach ($products as $product) {
+        // htmlspecialchars evita que el nombre del producto rompa el HTML si contuviera caracteres como < > " '
         $items[] = htmlspecialchars($product['name'])
-                 . ' x' . $product['quantity']
-                 . ' (' . number_format($product['price'], 2) . ' €)';
+                 . ' x' . $product['quantity'] // ej: "x2"
+                 . ' (' . number_format($product['price'], 2) . ' €)'; // ej: "(24.99 €)"
     }
-    return implode('<br>', $items);   // uno por línea dentro de la celda
+
+    // Une todos los productos en un solo texto, cada uno en su línea (<br>)
+    // dentro de la misma celda de la tabla
+    return implode('<br>', $items);
 }
 
+// Comprobación: ¿existe el archivo de comandas?
+// Si no existe, no podemos mostrar nada: devolvemos un error 404 y una pequeña página HTML con botones de vuelta, tal como pide el enunciado.
 if (!file_exists(ORDERS_FILE)) {
 
-    http_response_code(404);
+    http_response_code(404);   // Código de estado HTTP: "no encontrado"
 
     echo '
     <h2>Error: orders file not found</h2>
@@ -35,12 +42,17 @@ if (!file_exists(ORDERS_FILE)) {
     </a>
     ';
 
-    exit;
+    exit;   // detiene el script aquí: no se ejecuta nada más
 }
 
+// El archivo existe: lo leemos
+// file_get_contents() lee todo el texto del archivo (el JSON en bruto)
+// json_decode(..., true) lo convierte en un array asociativo de PHP
+// (el "true" es lo que hace que sea array y no un objeto)
 $orders = json_decode(file_get_contents(ORDERS_FILE), true);
 
-http_response_code(200);
+http_response_code(200);   // Todo ha ido bien: código de estado "OK"
+
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +65,6 @@ http_response_code(200);
 <body>
     <nav>
         <img class="logo" src="../client/img/logo.png">
-        <!-- faltaba ../client/ en estos tres enlaces, porque este PHP vive en server -->
         <a href="../client/index.html">Start</a>
         <a href="../client/documentacion.html">Documentation</a>
         <a href="../client/login.html">Log in</a>
@@ -76,7 +87,11 @@ http_response_code(200);
                 <th>Total (€)</th>
             </tr>
 
-            <?php foreach($orders as $order): ?>
+            <?php
+            // foreach recorre el array $orders una comanda a la vez.
+            // Cada vuelta del bucle, $order contiene los datos de UNA comanda,
+            // y se genera una fila <tr> distinta para cada una.
+            foreach($orders as $order): ?>
 
             <tr>
                 <td><?= htmlspecialchars($order['orderId']) ?></td>
@@ -84,11 +99,12 @@ http_response_code(200);
                 <td><?= htmlspecialchars($order['customer']['address']) ?></td>
                 <td><?= htmlspecialchars($order['customer']['email']) ?></td>
                 <td><?= htmlspecialchars($order['customer']['phone']) ?></td>
+                <!-- aquí llamamos a la función que definimos arriba del todo -->
                 <td><?= formatProducts($order['products']) ?></td>
                 <td><?= htmlspecialchars($order['totalWithVat']) ?></td>
             </tr>
 
-            <?php endforeach; ?>
+            <?php endforeach; // cierra el bucle que abrimos arriba ?>
 
             </table>
 

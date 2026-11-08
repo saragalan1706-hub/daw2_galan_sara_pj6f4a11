@@ -28,7 +28,7 @@ nav a {
 .logo {
     height: 80px;
     width: 80px;
-    margin-right: 20px;
+    justify-content: right;
 }
 
 .flecha {
@@ -75,40 +75,35 @@ footer p {
 
 /* PAGINA DE DOCUMENTACIO documentacion.html */
 
-/* Contenedor general: separa el texto de los bordes de la pantalla */
 .contenido {
-    max-width: 800px;      /* ancho máximo para que no se estire demasiado */
-    margin: 0 auto;        /* centra el bloque horizontalmente */
-    padding: 20px 40px;    /* espacio interior arriba/abajo y a los lados */
+    max-width: 800px;
+    margin: 0 auto;  /* centra el bloque horizontalmente */
+    padding: 20px 40px;
 }
 
-/* Cada bloque de texto (h3 + p) va dentro de un recuadro, como las .card */
 .recuadro {
     border: 1px solid #ccc;
-    border-radius: 8px;        /* bordes redondeados */
+    border-radius: 8px; /* bordes redondeados */
     padding: 20px;
-    margin-bottom: 20px;       /* separación entre recuadros */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);   /* misma sombra que las tarjetas */
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .recuadro h3 {
-    margin-top: 0;   /* evita que el título quede pegado al borde del recuadro */
+    margin-top: 0;
 }
 
 /* LOG IN - login.html */
-
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 75hv; /* deja hueco entre la nav y el footer */
+    min-height: 75hv; /* Deja hueco entre la nav y el footer */
 }
 
 .login-card{
-    background-color: white;
     border: 1px solid #ccc;
     border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     padding: 40px;
     width: 320px;
     text-align: center;
@@ -119,23 +114,18 @@ footer p {
     margin-bottom: 25px;
 }
 
-/* Cada input ocupa su propia línea, con forma de píldora redondeada */
 .login-card label {
     display: block;
     text-align: left;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #333;
 }
 
 .login-card input {
     width: 100%;
-    box-sizing: border-box;   /* el padding no se suma al 100% de ancho */
+    box-sizing: border-box; /* El padding no se suma al 100% de ancho */
     padding: 12px 18px;
     margin-bottom: 18px;
     border: 1px solid rgb(13, 13, 69);
-    border-radius: 25px;      /* bordes muy redondeados, como la imagen */
-    font-size: 15px;
+    border-radius: 25px; /* Bordes muy redondeados. */
 }
 
 /* El botón grande y azul, a juego con la nav */
@@ -146,18 +136,16 @@ footer p {
     border-radius: 25px;
     background-color: rgb(13, 13, 69);
     color: white;
-    font-size: 16px;
-    letter-spacing: 1px;
-    cursor: pointer;
 }
 
+/* Se ilumina le boton al pasar el curosr por encima */
 .login-card button:hover {
     opacity: 0.9;
 }
 
 /* MENU DE OPERACIONES - menu-operaciones.html */
 .menu-container {
-    flex: 1;   /* empuja el footer abajo, igual que en login-container */
+    flex: 1; /* Empuja el footer abajo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,7 +155,6 @@ footer p {
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     padding: 40px;
     width: 320px;
     text-align: center;
@@ -178,19 +165,14 @@ footer p {
     margin-bottom: 25px;
 }
 
-/* El desplegable, con la misma forma de píldora que los inputs del login */
 .menu-card select {
     width: 100%;
-    box-sizing: border-box;
     padding: 12px 18px;
     margin-bottom: 20px;
-    border: 1px solid rgb(13, 13, 69);
     border-radius: 25px;
-    font-size: 15px;
     background-color: white;
 }
 
-/* Botón principal: azul oscuro, igual que "Access operations menu" */
 .menu-card .btn-principal {
     width: 100%;
     padding: 14px;
@@ -198,8 +180,6 @@ footer p {
     border-radius: 25px;
     background-color: rgb(13, 13, 69);
     color: white;
-    font-size: 16px;
-    letter-spacing: 1px;
     cursor: pointer;
     margin-bottom: 12px;
 }
@@ -208,7 +188,6 @@ footer p {
     opacity: 0.9;
 }
 
-/* Botón secundario: mismo borde, fondo transparente, para distinguirlo del principal */
 .menu-card .btn-secundario {
     width: 100%;
     padding: 14px;
@@ -216,9 +195,6 @@ footer p {
     border-radius: 25px;
     background-color: white;
     color: rgb(13, 13, 69);
-    font-size: 16px;
-    letter-spacing: 1px;
-    cursor: pointer;
 }
 
 .menu-card .btn-secundario:hover {
@@ -226,9 +202,8 @@ footer p {
 }
 
 /* PAGINA DE CREAR ORDEN - crear.html */
-
 .order-container {
-    flex: 1;   /* empuja el footer abajo, igual que en las otras páginas */
+    flex: 1;   /* Empuja el footer abajo */
     display: flex;
     justify-content: center;
     padding: 20px 0;
@@ -238,18 +213,15 @@ footer p {
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     padding: 40px;
     width: 500px;
-    max-width: 90%;
 }
 
 .order-card h1 {
     margin-top: 0;
 }
 
-/* Cada sección (User data / Products) va en su propio recuadro,
-   igual que en documentacion.html, para que se note la separación */
+/* Cada sección (User data / Products) va en su propio recuadro */
 .order-card fieldset {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -257,12 +229,7 @@ footer p {
     margin-bottom: 20px;
 }
 
-.order-card legend {
-    font-weight: bold;
-    padding: 0 8px;
-}
-
-/* Los inputs de texto van en columna, con forma de píldora */
+/* Los inputs de texto van en columna, con forma de pastilla */
 .order-card fieldset input[type="text"],
 .order-card fieldset input[type="email"],
 .order-card fieldset input[type="tel"] {
@@ -271,9 +238,7 @@ footer p {
     box-sizing: border-box;
     padding: 12px 18px;
     margin-bottom: 12px;
-    border: 1px solid rgb(13, 13, 69);
     border-radius: 25px;
-    font-size: 15px;
 }
 
 /* Cada producto en fila: checkbox, nombre y cantidad alineados */
@@ -285,10 +250,11 @@ footer p {
 }
 
 .product p {
-    flex: 1;   /* el nombre del producto ocupa el espacio libre */
+    flex: 1;
     margin: 0;
 }
 
+/* Apartado de porductos */
 .product input[type="number"] {
     width: 60px;
     padding: 6px;
@@ -297,52 +263,36 @@ footer p {
     text-align: center;
 }
 
-/* Resultado del total, destacado */
-#result {
+/* Resultado del total, destacado (IVA) */
+.result {
     font-weight: bold;
     font-size: 17px;
     text-align: center;
     margin: 15px 0;
 }
 
-/* Botones: mismo estilo principal/secundario que en menu-operaciones */
+/* Estilo de los botones */
 .order-card .btn-principal {
     width: 100%;
     padding: 14px;
-    border: none;
     border-radius: 25px;
     background-color: rgb(13, 13, 69);
     color: white;
-    font-size: 16px;
-    letter-spacing: 1px;
-    cursor: pointer;
     margin-bottom: 12px;
-}
-
-.order-card .btn-principal:hover {
-    opacity: 0.9;
 }
 
 .order-card .btn-secundario {
     width: 100%;
     padding: 12px;
-    border: 1px solid rgb(13, 13, 69);
     border-radius: 25px;
     background-color: white;
     color: rgb(13, 13, 69);
-    font-size: 15px;
-    cursor: pointer;
     margin-bottom: 10px;
 }
 
-.order-card .btn-secundario:hover {
-    background-color: #f0f0f5;
-}
-
 /* PAGINA DE VISUALIZACION DE COMANDAS - listar.html */
-
 .orders-container {
-    flex: 1;   /* empuja el footer abajo, igual que en las otras páginas */
+    flex: 1;   /* Empuja el footer abajo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -352,7 +302,6 @@ footer p {
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     padding: 40px;
     width: 350px;
     text-align: center;
@@ -365,31 +314,22 @@ footer p {
 
 /* Separador visual entre "ver todas" y "buscar una" */
 .orders-card hr {
-    border: none;
     border-top: 1px solid #ddd;
     margin: 25px 0;
 }
 
-/* Botón de ver todas, estilo principal igual que en las demás páginas */
 .orders-card .btn-principal {
     width: 100%;
     padding: 14px;
-    border: none;
     border-radius: 25px;
     background-color: rgb(13, 13, 69);
     color: white;
-    font-size: 16px;
     letter-spacing: 1px;
-    cursor: pointer;
-}
-
-.orders-card .btn-principal:hover {
-    opacity: 0.9;
 }
 
 /* El formulario de búsqueda por ID */
 .orders-card form {
-    margin: 0;   /* anula el margin:20px genérico que tenías para "form" */
+    margin: 0;   /* Anula el margin:20px genérico para "form" */
 }
 
 .orders-card input[type="text"] {
@@ -399,7 +339,6 @@ footer p {
     margin-bottom: 12px;
     border: 1px solid rgb(13, 13, 69);
     border-radius: 25px;
-    font-size: 15px;
 }
 
 .orders-card .btn-secundario {
@@ -409,18 +348,11 @@ footer p {
     border-radius: 25px;
     background-color: white;
     color: rgb(13, 13, 69);
-    font-size: 15px;
-    cursor: pointer;
 }
 
-.orders-card .btn-secundario:hover {
-    background-color: #f0f0f5;
-}
-
-/* PAGINA DE LISTADO DE COMANDAS - listar.php */
-
+/* PAGINA DE LISTADO DE COMANDAS - listar.php y listar1.php */
 .resultado-container {
-    flex: 1;   /* empuja el footer abajo, igual que en las otras páginas */
+    flex: 1;   /* Empuja el footer abajo */
     padding: 30px 20px;
 }
 
@@ -428,17 +360,16 @@ footer p {
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 16px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     padding: 30px;
     max-width: 1000px;
-    margin: 0 auto;   /* centra la tarjeta horizontalmente */
+    margin: 0 auto;   /* Centra la tarjeta horizontalmente */
 }
 
 .resultado-card h1 {
     margin-top: 0;
 }
 
-/* Tabla con bordes suaves en vez del border="1" por defecto */
+/* Bordes de la tabla */
 .resultado-card table {
     width: 100%;
     border-collapse: collapse;   /* une los bordes de las celdas en uno solo */
@@ -457,11 +388,6 @@ footer p {
     color: white;
 }
 
-/* Filas alternas más claras, para leer mejor cada comanda */
-.resultado-card tr:nth-child(even) {
-    background-color: #f7f7fb;
-}
-
 /* Botones de vuelta, en fila */
 .botones-vuelta {
     display: flex;
@@ -478,12 +404,6 @@ footer p {
     background-color: white;
     color: rgb(13, 13, 69);
     font-size: 15px;
-    cursor: pointer;
     text-decoration: none;   /* por si el <a> hereda el subrayado */
     text-align: center;
-    display: inline-block;
-}
-
-.botones-vuelta .btn-secundario:hover {
-    background-color: #f0f0f5;
 }
